@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - PERALIS STORE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .fade-in { animation: fadeIn 0.6s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- NAVBAR -->
+    <div class="bg-white border-b shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between py-3">
+                <a href="main.html" class="flex items-center gap-2">
+                    <div class="w-9 h-9 bg-lime-400 rounded-xl flex items-center justify-center text-2xl">🇮🇩</div>
+                    <div>
+                        <h1 class="text-2xl font-bold tracking-tighter text-gray-900">PERALIS STORE</h1>
+                        <p class="text-[10px] text-gray-500 -mt-1">Perlengkapan Alat Tulis</p>
+                    </div>
+                </a>
+                <div class="flex items-center gap-6">
+                    <a href="main.html" class="text-sm font-medium text-gray-700 hover:text-lime-600 flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-left"></i> Kembali ke Toko
+                    </a>
+                    <div onclick="showCartAbout()" class="relative cursor-pointer">
+                        <i class="fa-solid fa-shopping-cart text-2xl text-gray-700"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="bg-gradient-to-br from-lime-100 to-white py-20">
+        <div class="max-w-4xl mx-auto px-4 text-center fade-in">
+            <div class="text-6xl mb-6">🇮🇩</div>
+            <h1 class="text-5xl font-bold text-gray-900 mb-4">Tentang Kami</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Kami hadir untuk memenuhi kebutuhan alat tulis Anda dengan produk berkualitas dan harga yang terjangkau.
+            </p>
+        </div>
+    </div>
+
+    <!-- STORY SECTION -->
+    <div class="max-w-5xl mx-auto px-4 py-16">
+        <div class="grid md:grid-cols-2 gap-12 items-center fade-in">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Cerita Kami</h2>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                    PERALIS STORE didirikan pada tahun 2020 dengan visi sederhana: menyediakan perlengkapan alat tulis berkualitas tinggi yang dapat dijangkau oleh semua kalangan masyarakat Indonesia.
+                </p>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                    Berawal dari toko kecil di sudut kota, kini kami telah melayani ribuan pelanggan setia di seluruh Indonesia. Kami percaya bahwa alat tulis yang baik adalah investasi untuk masa depan yang lebih cerah.
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    Setiap produk yang kami jual telah melalui seleksi ketat untuk memastikan kualitas terbaik sampai ke tangan Anda.
+                </p>
+            </div>
+            <div class="bg-gradient-to-br from-lime-100 to-emerald-100 rounded-3xl p-8 text-center">
+                <img src="https://picsum.photos/id/1015/600/400" alt="Peralis Store" class="rounded-2xl w-full shadow-lg">
+            </div>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="bg-lime-400 py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in">
+                    <div class="text-4xl font-bold text-black">5K+</div>
+                    <div class="text-sm font-medium text-gray-800 mt-1">Pelanggan Puas</div>
+                </div>
+                <div class="fade-in">
+                    <div class="text-4xl font-bold text-black">200+</div>
+                    <div class="text-sm font-medium text-gray-800 mt-1">Produk Tersedia</div>
+                </div>
+                <div class="fade-in">
+                    <div class="text-4xl font-bold text-black">34</div>
+                    <div class="text-sm font-medium text-gray-800 mt-1">Provinsi Terjangkau</div>
+                </div>
+                <div class="fade-in">
+                    <div class="text-4xl font-bold text-black">4.9⭐</div>
+                    <div class="text-sm font-medium text-gray-800 mt-1">Rating Rata-rata</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VALUES -->
+    <div class="max-w-5xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Nilai-Nilai Kami</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center p-8 rounded-3xl bg-gray-50 hover:bg-lime-50 transition-colors fade-in">
+                <div class="text-4xl mb-4">✅</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Kualitas Terjamin</h3>
+                <p class="text-gray-600 text-sm">Setiap produk diseleksi ketat untuk memastikan standar kualitas tertinggi.</p>
+            </div>
+            <div class="text-center p-8 rounded-3xl bg-gray-50 hover:bg-lime-50 transition-colors fade-in">
+                <div class="text-4xl mb-4">💰</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Harga Terjangkau</h3>
+                <p class="text-gray-600 text-sm">Kami berkomitmen memberikan harga terbaik tanpa mengorbankan kualitas.</p>
+            </div>
+            <div class="text-center p-8 rounded-3xl bg-gray-50 hover:bg-lime-50 transition-colors fade-in">
+                <div class="text-4xl mb-4">🚚</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Pengiriman Cepat</h3>
+                <p class="text-gray-600 text-sm">Gratis ongkir ke seluruh Indonesia dengan pengiriman yang aman dan cepat.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TEAM -->
+    <div class="bg-gray-50 py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Tim Kami</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center fade-in">
+                    <img src="https://picsum.photos/id/1005/200/200" alt="Team" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover shadow-md">
+                    <div class="font-semibold text-gray-900">Budi Santoso</div>
+                    <div class="text-sm text-gray-500">Founder & CEO</div>
+                </div>
+                <div class="text-center fade-in">
+                    <img src="https://picsum.photos/id/1011/200/200" alt="Team" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover shadow-md">
+                    <div class="font-semibold text-gray-900">Siti Rahayu</div>
+                    <div class="text-sm text-gray-500">Head of Operations</div>
+                </div>
+                <div class="text-center fade-in">
+                    <img src="https://picsum.photos/id/1012/200/200" alt="Team" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover shadow-md">
+                    <div class="font-semibold text-gray-900">Andi Wijaya</div>
+                    <div class="text-sm text-gray-500">Product Manager</div>
+                </div>
+                <div class="text-center fade-in">
+                    <img src="https://picsum.photos/id/1027/200/200" alt="Team" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover shadow-md">
+                    <div class="font-semibold text-gray-900">Dewi Lestari</div>
+                    <div class="text-sm text-gray-500">Customer Service</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="max-w-3xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-10">Hubungi Kami</h2>
+        <form onsubmit="submitContact(event)" class="space-y-5">
+            <div class="grid md:grid-cols-2 gap-5">
+                <input type="text" id="contact-name" placeholder="Nama Lengkap" required
+                    class="w-full px-5 py-4 border border-gray-200 rounded-2xl outline-none focus:border-lime-400 text-sm">
+                <input type="email" id="contact-email" placeholder="Email" required
+                    class="w-full px-5 py-4 border border-gray-200 rounded-2xl outline-none focus:border-lime-400 text-sm">
+            </div>
+            <input type="text" id="contact-subject" placeholder="Subjek"
+                class="w-full px-5 py-4 border border-gray-200 rounded-2xl outline-none focus:border-lime-400 text-sm">
+            <textarea id="contact-message" rows="5" placeholder="Pesan Anda..." required
+                class="w-full px-5 py-4 border border-gray-200 rounded-2xl outline-none focus:border-lime-400 text-sm resize-none"></textarea>
+            <button type="submit"
+                class="w-full bg-lime-400 hover:bg-lime-500 text-black font-bold py-4 rounded-2xl text-lg transition-colors">
+                Kirim Pesan <i class="fa-solid fa-paper-plane ml-2"></i>
+            </button>
+        </form>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-10 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <div class="w-8 h-8 bg-lime-400 rounded-xl flex items-center justify-center text-xl">🇮🇩</div>
+                <span class="text-xl font-bold">PERALIS STORE</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">Perlengkapan Alat Tulis Terpercaya</p>
+            <a href="main.html" class="inline-block bg-lime-400 text-black font-bold px-8 py-3 rounded-2xl hover:bg-lime-500 transition-colors">
+                Kembali Belanja
+            </a>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-gray-500 text-sm">
+                &copy; 2026 PERALIS STORE. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showCartAbout() {
+            const savedCart = localStorage.getItem('peralisCart');
+            const cart = savedCart ? JSON.parse(savedCart) : [];
+            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (total === 0) { alert('Keranjang belanja Anda kosong!'); return; }
+            alert(`Anda memiliki ${total} item di keranjang.\n\nKembali ke halaman utama untuk checkout.`);
+        }
+
+        function submitContact(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            alert(`Terima kasih, ${name}!\n\nPesan Anda telah kami terima. Tim kami akan menghubungi Anda segera.`);
+            e.target.reset();
+        }
+
+        // Update cart count from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedCart = localStorage.getItem('peralisCart');
+            if (savedCart) {
+                const cart = JSON.parse(savedCart);
+                const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+                document.getElementById('cart-count').textContent = total;
+            }
+        });
+    </script>
+</body>
+</html>
