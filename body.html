@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERALIS STORE - Perlengkapan Alat Tulis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --primary-green: #a3e635;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(180deg, #bef575 0%, #ffffff 50%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(90deg, #bef575 0%, #a3e635 100%);
+        }
+        
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgb(163 230 77), 0 8px 10px -6px rgb(163 230 77);
+        }
+        
+        .buy-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .buy-btn:hover {
+            background-color: #84cc16;
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -2px;
+            left: 0;
+            background-color: #a3e635;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .cart-count {
+            animation: pop 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- HEADER / NAVBAR TOP -->
+    <div class="bg-white border-b shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between py-3">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 bg-lime-400 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-inner">
+                        🇮🇩
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold tracking-tighter text-gray-900">PERALIS STORE</h1>
+                        <p class="text-[10px] text-gray-500 -mt-1">Perlengkapan Alat Tulis</p>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-xl mx-4">
+                    <div onclick="focusSearch()" class="flex items-center bg-gray-100 rounded-3xl px-5 py-3 text-gray-500 hover:bg-gray-200 transition-colors cursor-pointer">
+                        <i class="fa-solid fa-magnifying-glass mr-3"></i>
+                        <input id="search-input" 
+                               type="text" 
+                               placeholder="Pencarian..." 
+                               class="flex-1 bg-transparent outline-none text-sm placeholder-gray-400">
+                    </div>
+                </div>
+
+                <!-- Right Side -->
+                <div class="flex items-center gap-6">
+                    <a href="#" onclick="showLoginModal()" class="text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-1">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="hidden md:inline">Sign in</span>
+                    </a>
+                    
+                    <!-- Cart -->
+                    <div onclick="showCart()" class="relative cursor-pointer">
+                        <i class="fa-solid fa-shopping-cart text-2xl text-gray-700"></i>
+                        <span id="cart-count" 
+                              class="cart-count absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                            0
+                        </span>
+                    </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-gray-700">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVIGATION MENU -->
+        <div class="bg-white border-t">
+            <div class="max-w-7xl mx-auto px-4">
+                <nav id="desktop-nav" class="hidden md:flex items-center gap-x-8 text-sm font-semibold text-gray-700 py-4 overflow-x-auto">
+                    <a href="#" onclick="scrollToSection('home')" class="nav-link px-4 py-1 text-lime-600 font-bold">HOME</a>
+                    <a href="#" onclick="scrollToSection('pensil')" class="nav-link px-4 py-1 hover:text-lime-600">PENSIL</a>
+                    <a href="#" onclick="scrollToSection('busur')" class="nav-link px-4 py-1 hover:text-lime-600">BUSUR</a>
+                    <a href="#" onclick="scrollToSection('pulpen')" class="nav-link px-4 py-1 hover:text-lime-600">PULPEN</a>
+                    <a href="#" onclick="scrollToSection('penggaris')" class="nav-link px-4 py-1 hover:text-lime-600">PENGGARIS PLASTIK</a>
+                    <a href="#" onclick="scrollToSection('penghapus')" class="nav-link px-4 py-1 hover:text-lime-600">PENGHAPUS</a>
+                    <a href="#" onclick="scrollToSection('tipex')" class="nav-link px-4 py-1 hover:text-lime-600">TIP-EX</a>
+                    <a href="#" onclick="scrollToSection('buku')" class="nav-link px-4 py-1 hover:text-lime-600">BUKU</a>
+                    <a href="#" onclick="scrollToSection('stabilo')" class="nav-link px-4 py-1 hover:text-lime-600">STABILO</a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-4 py-3 text-sm">
+            <div class="flex flex-col gap-3">
+                <a href="#" onclick="scrollToSection('home');toggleMobileMenu()" class="py-2 px-4 hover:bg-lime-100 rounded-2xl">🏠 HOME</a>
+                <a href="#" onclick="scrollToSection('pensil');toggleMobileMenu()" class="py-2 px-4 hover:bg-lime-100 rounded-2xl">✏️ PENSIL</a>
+                <a href="#" onclick="scrollToSection('busur');toggleMobileMenu()" class="py-2 px-4 hover:bg-lime-100 rounded-2xl">📐 BUSUR</a>
+                <a href="#" onclick="scrollToSection('pulpen');toggleMobileMenu()" class="py-2 px-4 hover:bg-lime-100 rounded-2xl">🖊️ PULPEN</a>
+                <a href="#" onclick="scrollToSection('penggaris');toggleMobileMenu()" class="py-2 px-4 hover:bg-lime-100 rounded-2xl">📏 PENGGARIS PLASTIK</a>
+                <a href="#" onclick="scrollToSection('penghapus');toggleMobileMenu()" class="py-2 px-4 hover:bg-lime-100 rounded-2xl">🧼 PENGHAPUS</a>
+                <a href="#" onclick="scrollToSection('tipex');toggleMobileMenu()" class="py-2 px-4 hover:bg-lime-100 rounded-2xl">🖍️ TIP-EX</a>
+                <a href="#" onclick="scrollToSection('buku');toggleMobileMenu()" class="py-2 px-4 hover:bg-lime-100 rounded-2xl">📖 BUKU</a>
+                <a href="#" onclick="scrollToSection('stabilo');toggleMobileMenu()" class="py-2 px-4 hover:bg-lime-100 rounded-2xl">🖌️ STABILO</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PENSIL SECTION -->
+    <div id="pensil" class="max-w-7xl mx-auto px-4 py-12">
+        <div class="flex justify-between items-baseline mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">PENSIL</h2>
+            <a href="#" onclick="viewAll('pensil')" class="text-lime-600 flex items-center gap-2 hover:underline">
+                Lihat Semua <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Product 1 -->
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-emerald-100 to-lime-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&h=300&fit=crop" alt="PENSIL JOVKO" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">PENSIL JOVKO P-88 2B PER 1</h3>
+                    <p class="text-gray-500 text-sm mt-1">Jovko Official</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div>
+                            <span class="text-xs text-gray-400">Harga</span>
+                            <p class="text-2xl font-bold text-gray-900">Rp 1.000</p>
+                        </div>
+                        <button onclick="addToCart(1, 'PENSIL JOVKO P-88 2B', 1000)" 
+                                class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            BUY
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-amber-100 to-yellow-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1600775508114-5c30cf911a40?w=400&h=300&fit=crop" alt="PENSIL KAYU" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">PENSIL KAYU WOODEN PENCILD-104 JOVKO 2B PER 1</h3>
+                    <p class="text-gray-500 text-sm mt-1">Jovko Official</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div>
+                            <span class="text-xs text-gray-400">Harga</span>
+                            <p class="text-2xl font-bold text-gray-900">Rp 2.000</p>
+                        </div>
+                        <button onclick="addToCart(2, 'PENSIL KAYU WOODEN PENCILD-104', 2000)" 
+                                class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            BUY
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-sky-100 to-blue-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=400&h=300&fit=crop" alt="PENSIL MEKANIK" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">Caplet Mechanical Pencil 0.5mm</h3>
+                    <p class="text-gray-500 text-sm mt-1">PENTEL - PENSIL MEKANIK PER 1</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div>
+                            <span class="text-xs text-gray-400">Harga</span>
+                            <p class="text-2xl font-bold text-gray-900">Rp 14.500</p>
+                        </div>
+                        <button onclick="addToCart(3, 'PENTEL Mechanical Pencil 0.5mm', 14500)" 
+                                class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            BUY
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUSUR SECTION -->
+    <div id="busur" class="max-w-7xl mx-auto px-4 py-12 bg-gray-50">
+        <div class="flex justify-between items-baseline mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">BUSUR</h2>
+            <a href="#" onclick="viewAll('busur')" class="text-lime-600 flex items-center gap-2 hover:underline">
+                Lihat Semua <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Product 1 -->
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-slate-100 to-gray-100 flex items-center justify-center p-8">
+                    <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop" alt="BUSUR BUTTERFLY" class="max-h-full object-contain rotate-12">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">BUSUR BUTTERFLY 180 DERAJAT</h3>
+                    <p class="text-gray-500 text-sm mt-1">Protractor Premium</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div>
+                            <span class="text-xs text-gray-400">Harga</span>
+                            <p class="text-2xl font-bold text-gray-900">Rp 2.500</p>
+                        </div>
+                        <button onclick="addToCart(4, 'BUSUR BUTTERFLY 180°', 2500)" 
+                                class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            BUY
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center p-8">
+                    <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop" alt="BUSUR PLASTIK" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">BUSUR PLASTIK TIPIS</h3>
+                    <p class="text-gray-500 text-sm mt-1">Set Square & Ruler</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div>
+                            <span class="text-xs text-gray-400">Harga</span>
+                            <p class="text-2xl font-bold text-gray-900">Rp 1.000</p>
+                        </div>
+                        <button onclick="addToCart(5, 'BUSUR PLASTIK TIPIS', 1000)" 
+                                class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            BUY
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PULPEN SECTION -->
+    <div id="pulpen" class="max-w-7xl mx-auto px-4 py-12">
+        <div class="flex justify-between items-baseline mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">PULPEN</h2>
+            <a href="#" onclick="viewAll('pulpen')" class="text-lime-600 flex items-center gap-2 hover:underline">
+                Lihat Semua <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Product 1 -->
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-zinc-100 to-slate-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&h=300&fit=crop" alt="PULPEN MINYAK" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">PULPEN MINYAK JOVKO PER 1</h3>
+                    <p class="text-gray-500 text-sm mt-1">Gel Pen Premium</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div>
+                            <span class="text-xs text-gray-400">Harga</span>
+                            <p class="text-2xl font-bold text-gray-900">Rp 5.000</p>
+                        </div>
+                        <button onclick="addToCart(6, 'PULPEN MINYAK JOVKO', 5000)" 
+                                class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            BUY
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-black to-zinc-900 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?w=400&h=300&fit=crop" alt="PULPEN STANDAR" class="max-h-full object-contain brightness-110">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">PULPEN STANDAR HITAM PER 1</h3>
+                    <p class="text-gray-500 text-sm mt-1">AE7 0.5mm</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div>
+                            <span class="text-xs text-gray-400">Harga</span>
+                            <p class="text-2xl font-bold text-gray-900">Rp 2.000</p>
+                        </div>
+                        <button onclick="addToCart(7, 'PULPEN STANDAR HITAM AE7', 2000)"
+                                class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            BUY
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&h=300&fit=crop" alt="PULPEN GEL" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">PULPEN GEL WARNA-WARNI SET 12</h3>
+                    <p class="text-gray-500 text-sm mt-1">Colorful Gel Pen</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div>
+                            <span class="text-xs text-gray-400">Harga</span>
+                            <p class="text-2xl font-bold text-gray-900">Rp 18.000</p>
+                        </div>
+                        <button onclick="addToCart(8, 'PULPEN GEL WARNA-WARNI SET 12', 18000)"
+                                class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            BUY
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PENGGARIS PLASTIK SECTION -->
+    <div id="penggaris" class="max-w-7xl mx-auto px-4 py-12 bg-gray-50">
+        <div class="flex justify-between items-baseline mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">PENGGARIS PLASTIK</h2>
+            <a href="#" onclick="viewAll('penggaris')" class="text-lime-600 flex items-center gap-2 hover:underline">Lihat Semua <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-yellow-100 to-amber-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop" alt="PENGGARIS 30CM" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">PENGGARIS PLASTIK 30CM</h3>
+                    <p class="text-gray-500 text-sm mt-1">Ruler Standard</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 2.000</p></div>
+                        <button onclick="addToCart(9, 'PENGGARIS PLASTIK 30CM', 2000)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop" alt="PENGGARIS 20CM" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">PENGGARIS PLASTIK 20CM</h3>
+                    <p class="text-gray-500 text-sm mt-1">Ruler Mini</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 1.500</p></div>
+                        <button onclick="addToCart(10, 'PENGGARIS PLASTIK 20CM', 1500)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-teal-100 to-cyan-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop" alt="PENGGARIS SEGITIGA" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">PENGGARIS SEGITIGA SET 2PCS</h3>
+                    <p class="text-gray-500 text-sm mt-1">Triangle Ruler Set</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 5.000</p></div>
+                        <button onclick="addToCart(11, 'PENGGARIS SEGITIGA SET 2PCS', 5000)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PENGHAPUS SECTION -->
+    <div id="penghapus" class="max-w-7xl mx-auto px-4 py-12">
+        <div class="flex justify-between items-baseline mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">PENGHAPUS</h2>
+            <a href="#" onclick="viewAll('penghapus')" class="text-lime-600 flex items-center gap-2 hover:underline">Lihat Semua <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=300&fit=crop" alt="PENGHAPUS PUTIH" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">PENGHAPUS PUTIH BERSIH JOVKO</h3>
+                    <p class="text-gray-500 text-sm mt-1">Eraser Premium</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 1.000</p></div>
+                        <button onclick="addToCart(12, 'PENGHAPUS PUTIH BERSIH JOVKO', 1000)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-violet-100 to-purple-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=300&fit=crop" alt="PENGHAPUS KARET" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">PENGHAPUS KARET BESAR</h3>
+                    <p class="text-gray-500 text-sm mt-1">Big Eraser</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 2.500</p></div>
+                        <button onclick="addToCart(13, 'PENGHAPUS KARET BESAR', 2500)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-lime-100 to-green-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=300&fit=crop" alt="PENGHAPUS MEKANIK" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">PENGHAPUS MEKANIK CLICK</h3>
+                    <p class="text-gray-500 text-sm mt-1">Mechanical Eraser</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 8.000</p></div>
+                        <button onclick="addToCart(14, 'PENGHAPUS MEKANIK CLICK', 8000)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TIP-EX SECTION -->
+    <div id="tipex" class="max-w-7xl mx-auto px-4 py-12 bg-gray-50">
+        <div class="flex justify-between items-baseline mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">TIP-EX</h2>
+            <a href="#" onclick="viewAll('tipex')" class="text-lime-600 flex items-center gap-2 hover:underline">Lihat Semua <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-white to-gray-100 flex items-center justify-center p-6 border">
+                    <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&h=300&fit=crop" alt="TIP-EX CAIR" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">TIP-EX CAIR KENKO 20ML</h3>
+                    <p class="text-gray-500 text-sm mt-1">Correction Fluid</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 5.000</p></div>
+                        <button onclick="addToCart(15, 'TIP-EX CAIR KENKO 20ML', 5000)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-sky-100 to-blue-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&h=300&fit=crop" alt="TIP-EX TAPE" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">TIP-EX TAPE ROLLER 5MM</h3>
+                    <p class="text-gray-500 text-sm mt-1">Correction Tape</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 7.500</p></div>
+                        <button onclick="addToCart(16, 'TIP-EX TAPE ROLLER 5MM', 7500)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&h=300&fit=crop" alt="TIP-EX PEN" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">TIP-EX PEN CORRECTION PEN</h3>
+                    <p class="text-gray-500 text-sm mt-1">Correction Pen</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 6.000</p></div>
+                        <button onclick="addToCart(17, 'TIP-EX PEN CORRECTION PEN', 6000)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUKU SECTION -->
+    <div id="buku" class="max-w-7xl mx-auto px-4 py-12">
+        <div class="flex justify-between items-baseline mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">BUKU</h2>
+            <a href="#" onclick="viewAll('buku')" class="text-lime-600 flex items-center gap-2 hover:underline">Lihat Semua <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-indigo-100 to-blue-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=300&fit=crop" alt="BUKU TULIS" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">BUKU TULIS 58 LEMBAR SIDU</h3>
+                    <p class="text-gray-500 text-sm mt-1">Sidu Official</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 3.500</p></div>
+                        <button onclick="addToCart(18, 'BUKU TULIS 58 LEMBAR SIDU', 3500)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&h=300&fit=crop" alt="BUKU GAMBAR" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">BUKU GAMBAR A4 40 LEMBAR</h3>
+                    <p class="text-gray-500 text-sm mt-1">Drawing Book</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 8.000</p></div>
+                        <button onclick="addToCart(19, 'BUKU GAMBAR A4 40 LEMBAR', 8000)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-rose-100 to-pink-100 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=400&h=300&fit=crop" alt="BUKU CATATAN" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">BUKU CATATAN HARDCOVER A5</h3>
+                    <p class="text-gray-500 text-sm mt-1">Notebook Premium</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 15.000</p></div>
+                        <button onclick="addToCart(20, 'BUKU CATATAN HARDCOVER A5', 15000)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STABILO SECTION -->
+    <div id="stabilo" class="max-w-7xl mx-auto px-4 py-12 bg-gray-50">
+        <div class="flex justify-between items-baseline mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">STABILO</h2>
+            <a href="#" onclick="viewAll('stabilo')" class="text-lime-600 flex items-center gap-2 hover:underline">Lihat Semua <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-yellow-200 to-lime-200 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&h=300&fit=crop" alt="STABILO BOSS KUNING" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">STABILO BOSS KUNING PER 1</h3>
+                    <p class="text-gray-500 text-sm mt-1">Highlighter Premium</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 8.000</p></div>
+                        <button onclick="addToCart(21, 'STABILO BOSS KUNING', 8000)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-pink-200 to-fuchsia-200 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&h=300&fit=crop" alt="STABILO PINK" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">STABILO BOSS PINK PER 1</h3>
+                    <p class="text-gray-500 text-sm mt-1">Highlighter Premium</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 8.000</p></div>
+                        <button onclick="addToCart(22, 'STABILO BOSS PINK', 8000)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card bg-white rounded-3xl shadow overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-cyan-200 to-sky-200 flex items-center justify-center p-6">
+                    <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&h=300&fit=crop" alt="STABILO SET" class="max-h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-900">STABILO BOSS SET 6 WARNA</h3>
+                    <p class="text-gray-500 text-sm mt-1">Highlighter Set</p>
+                    <div class="flex justify-between items-end mt-4">
+                        <div><span class="text-xs text-gray-400">Harga</span><p class="text-2xl font-bold text-gray-900">Rp 45.000</p></div>
+                        <button onclick="addToCart(23, 'STABILO BOSS SET 6 WARNA', 45000)" class="buy-btn bg-lime-400 hover:bg-lime-500 text-black font-bold px-8 py-3 rounded-3xl text-sm flex items-center gap-2"><i class="fa-solid fa-cart-plus"></i> BUY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-3 gap-10">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-9 h-9 bg-lime-400 rounded-xl flex items-center justify-center text-2xl">🇮🇩</div>
+                        <h3 class="text-xl font-bold">PERALIS STORE</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Toko perlengkapan alat tulis terpercaya di Indonesia. Kualitas terbaik, harga terjangkau.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lime-400">Kategori</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" onclick="scrollToSection('pensil')" class="hover:text-lime-400">Pensil</a></li>
+                        <li><a href="#" onclick="scrollToSection('busur')" class="hover:text-lime-400">Busur</a></li>
+                        <li><a href="#" onclick="scrollToSection('pulpen')" class="hover:text-lime-400">Pulpen</a></li>
+                        <li><a href="#" onclick="scrollToSection('penggaris')" class="hover:text-lime-400">Penggaris Plastik</a></li>
+                        <li><a href="#" onclick="scrollToSection('penghapus')" class="hover:text-lime-400">Penghapus</a></li>
+                        <li><a href="#" onclick="scrollToSection('tipex')" class="hover:text-lime-400">Tip-Ex</a></li>
+                        <li><a href="#" onclick="scrollToSection('buku')" class="hover:text-lime-400">Buku</a></li>
+                        <li><a href="#" onclick="scrollToSection('stabilo')" class="hover:text-lime-400">Stabilo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lime-400">Informasi</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="about.html" class="hover:text-lime-400">Tentang Kami</a></li>
+                        <li><a href="#" class="hover:text-lime-400">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="hover:text-lime-400">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
+                &copy; 2026 PERALIS STORE. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="jawa.js"></script>
+</body>
+</html>
